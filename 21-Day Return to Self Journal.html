@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21-Day Return to Self: Printable Journal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        @page {
+            size: 8.5in 11in;
+            margin: 0.75in 1in;
+        }
+        
+        @media print {
+            body { background: white; }
+            .journal-container { box-shadow: none; }
+            .print-button { display: none; }
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c2c2c;
+            background: #f9f7f4;
+        }
+        
+        .header-bar {
+            background: #2c2c2c;
+            color: white;
+            padding: 1em;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .header-bar h1 {
+            font-size: 1.3em;
+            margin: 0;
+        }
+        
+        .header-bar p {
+            font-size: 0.9em;
+            margin: 0.3em 0 0 0;
+            opacity: 0.9;
+        }
+        
+        .print-button {
+            background: #8b7f77;
+            color: white;
+            border: none;
+            padding: 0.6em 1.2em;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.9em;
+            float: right;
+            margin-top: -2.5em;
+            margin-right: 1em;
+        }
+        
+        .print-button:hover {
+            background: #6b5f57;
+        }
+        
+        .journal-container {
+            max-width: 6.5in;
+            margin: 1.5em auto;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        /* Cover Page */
+        .cover-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 10.5in;
+            padding: 1in;
+            page-break-after: always;
+            border-bottom: 2px solid #d4c4b0;
+        }
+        
+        .cover-page h1 {
+            font-size: 2.2em;
+            margin-bottom: 0.5em;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+        
+        .cover-page .subtitle {
+            font-size: 1.3em;
+            color: #666;
+            margin-bottom: 2em;
+            font-style: italic;
+        }
+        
+        .cover-page .tagline {
+            font-size: 1em;
+            color: #888;
+            margin-top: 3em;
+            max-width: 5in;
+            line-height: 1.8;
+        }
+        
+        /* Intro Page */
+        .intro-section {
+            padding: 1in 0.75in;
+            page-break-after: always;
+        }
+        
+        .intro-section h2 {
+            font-size: 1.4em;
+            margin-bottom: 1em;
+            color: #1a1a1a;
+        }
+        
+        .intro-section p {
+            margin-bottom: 1em;
+            text-align: justify;
+            line-height: 1.7;
+        }
+        
+        .intro-section ul {
+            margin-left: 1.5em;
+            line-height: 1.8;
+        }
+        
+        .intro-section li {
+            margin-bottom: 0.6em;
+        }
+        
+        .intro-section .highlight-box {
+            background: #f0ebe5;
+            padding: 1em;
+            margin: 1.5em 0;
+            border-left: 4px solid #b8a899;
+            line-height: 1.8;
+        }
+        
+        /* Phase Headers */
+        .phase-header {
+            padding: 0.75in 0.75in;
+            margin: 2em 0 1em 0;
+            background: #f5f2ed;
+            border-top: 3px solid #8b7f77;
+            page-break-after: avoid;
+        }
+        
+        .phase-header h2 {
+            font-size: 1.5em;
+            color: #1a1a1a;
+            margin-bottom: 0.5em;
+        }
+        
+        .phase-header p {
+            color: #555;
+            margin-bottom: 0.3em;
+        }
+        
+        /* Day Prompt */
+        .day-prompt {
+            padding: 1em 0.75in;
+            margin: 1.5em 0;
+            page-break-inside: avoid;
+        }
+        
+        .day-number {
+            font-size: 0.9em;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.3em;
+        }
+        
+        .day-prompt h3 {
+            font-size: 1.4em;
+            margin-bottom: 0.8em;
+            color: #1a1a1a;
+        }
+        
+        .opening-reflection {
+            background: #faf8f5;
+            padding: 0.8em;
+            margin-bottom: 1em;
+            border-left: 3px solid #d4c4b0;
+        }
+        
+        .opening-reflection strong {
+            display: block;
+            margin-bottom: 0.4em;
+            color: #666;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .opening-reflection p {
+            line-height: 1.7;
+            color: #444;
+        }
+        
+        .questions-section, .practice-section {
+            margin: 1em 0;
+        }
+        
+        .section-header {
+            font-weight: 600;
+            color: #666;
+            font-size: 0.95em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.6em;
+            display: block;
+        }
+        
+        .questions-section ol {
+            margin-left: 1.2em;
+            line-height: 1.8;
+        }
+        
+        .questions-section li {
+            margin-bottom: 0.8em;
+            color: #333;
+        }
+        
+        .practice-section p {
+            margin-bottom: 0.8em;
+            line-height: 1.7;
+            color: #333;
+        }
+        
+        .mantra {
+            background: #f0ebe5;
+            padding: 0.8em;
+            margin-top: 1em;
+            font-style: italic;
+            color: #555;
+            border-left: 3px solid #8b7f77;
+            text-align: center;
+        }
+        
+        /* Journal Pages */
+        .journal-page {
+            page-break-inside: avoid;
+            padding: 1em 0.75in;
+            margin: 1.5em 0;
+        }
+        
+        .journal-page h3 {
+            font-size: 1.2em;
+            margin-bottom: 1.5em;
+            color: #1a1a1a;
+        }
+        
+        .journal-page .prompt {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 1.5em;
+            line-height: 1.6;
+        }
+        
+        .lines {
+            height: 5.5in;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .line {
+            border-bottom: 1px solid #e0e0e0;
+            height: 1.8em;
+        }
+        
+        /* Reflection Pages */
+        .reflection-page {
+            page-break-after: always;
+            padding: 1em 0.75in;
+        }
+        
+        .reflection-page h2 {
+            font-size: 1.3em;
+            margin-bottom: 1em;
+            color: #1a1a1a;
+        }
+        
+        .reflection-page p {
+            margin-bottom: 0.8em;
+            line-height: 1.7;
+        }
+        
+        .page-footer {
+            text-align: center;
+            color: #999;
+            font-size: 0.85em;
+            margin-top: 1em;
+            padding-top: 0.5em;
+            border-top: 1px solid #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-bar">
+        <button class="print-button" onclick="window.print()">🖨️ Print / Save as PDF</button>
+        <h1>21-Day Return to Self</h1>
+        <p>A Guided Journey from Noise to Clarity</p>
+    </div>
+    
+    <div class="journal-container">
+        
+        <!-- COVER PAGE -->
+        <div class="cover-page">
+            <h1>21-Day Return to Self</h1>
+            <p class="subtitle">A Guided Journey from Noise to Clarity</p>
+            <p class="tagline">
+                Find the voice you've been listening for. Reconnect with what actually matters. 
+                Build a life that feels true to you—one day at a time.
+            </p>
+        </div>
+        
+        <!-- INTRODUCTION -->
+        <div class="intro-section">
+            <h2>An Invitation to Begin</h2>
+            
+            <p>
+                You picked this up because something inside you knows it's time to stop and listen. 
+                Not to achieve more or optimize further, but to remember who you actually are beneath all the noise.
+            </p>
+            
+            <p>
+                This challenge exists because we live in an age of endless inputs—endless comparisons, 
+                endless "shoulds," endless pressure to become someone other than ourselves. Somewhere along the way, 
+                many of us forgot how to hear our own voice.
+            </p>
+            
+            <div class="highlight-box">
+                <strong>What This Is:</strong><br>
+                An invitation to clear away what doesn't serve you, reconnect with your values and gifts, 
+                and make real choices aligned with who you actually are. Not a program to fix you. 
+                You're not broken. This is about returning home to yourself.
+            </div>
+            
+            <p><strong>How to Use This Journal:</strong></p>
+            <ul>
+                <li>Do one day at a time. No rushing.</li>
+                <li>Some prompts will land deeply. Others might not. That's okay.</li>
+                <li>Write honestly. There are no wrong answers.</li>
+                <li>If a practice feels too much, do what feels right.</li>
+                <li>Return to this whenever you need to remember who you are.</li>
+            </ul>
+            
+            <p style="margin-top: 1.5em;">
+                <strong>You need nothing but this journal, a pen, and honesty.</strong>
+            </p>
+        </div>
+        
+        <!-- PHASE 1 -->
+        <div class="phase-header">
+            <h2>PHASE ONE: Clearing the Noise</h2>
+            <p><strong>Days 1–7</strong> | Awareness, Honesty, Subtraction</p>
+            <p style="margin-top: 0.8em; color: #444;">
+                This first week is about noticing what distracts, drains, and disconnects you from yourself. 
+                You won't fix anything yet. You'll simply become aware. Honest. Ready.
+            </p>
+        </div>
+        
+        <!-- DAYS 1-7 CONTENT -->
+        <div class="day-prompt">
+            <div class="day-number">Day 1 of 21</div>
+            <h3>The Weight of Input</h3>
+            <div class="opening-reflection">
+                <strong>Opening Thought</strong>
+                <p>Your attention is your most valuable resource. Every notification, scroll, and external voice is bidding for a piece of it. Most of what you're exposed to, you didn't consciously choose. Today, you become aware of that.</p>
+            </div>
+            <span class="section-header">Reflect:</span>
+            <div class="questions-section">
+                <ol>
+                    <li>What comes into your life without you choosing it?</li>
+                    <li>When was the last time you felt genuinely peaceful?</li>
+                    <li>If you could unplug from three things today, what would they be?</li>
+                </ol>
+            </div>
+            <span class="section-header">Today's Practice</span>
+            <div class="practice-section">
+                <p><strong>Notice without changing.</strong> Walk through today with one question: "What am I giving my attention to right now?" Each time you reach for your phone, turn on a screen, or hear someone else's voice—pause and notice. That's it.</p>
+            </div>
+            <div class="mantra">"Awareness is the beginning of change."</div>
+        </div>
+        
+        <div class="day-prompt">
+            <div class="day-number">Day 2 of 21</div>
+            <h3>Busy vs. Full</h3>
+            <div class="opening-reflection">
+                <strong>Opening Thought</strong>
+                <p>There's a difference between a full schedule and a full life. You can be frantically occupied and completely empty inside. Today, you notice the difference.</p>
+            </div>
+            <span class="section-header">Reflect:</span>
+            <div class="questions-section">
+                <ol>
+                    <li>What in your life feels mandatory? Where did that mandate come from?</li>
+                    <li>If you removed the pressure to perform, what would you still want to do?</li>
+                    <li>What parts of your schedule actually feed your soul?</li>
+                </ol>
+            </div>
+            <span class="section-header">Today's Practice</span>
+            <div class="practice-section">
+                <p><strong>Fast from one thing.</strong> Choose something that takes your attention but doesn't feed you. For today, abstain. Don't replace it. Just let the space be empty. Notice what emerges.</p>
+            </div>
+            <div class="mantra">"Fullness is measured by alignment, not hours."</div>
+        </div>
+        
+        <div class="day-prompt">
+            <div class="day-number">Day 3 of 21</div>
+            <h3>Your Voice vs. The World's Voice</h3>
+            <div class="opening-reflection">
+                <strong>Opening Thought</strong>
+                <p>Inside you are two voices. One is authentic—what you actually want. The other is external pressure—what you think you should want. Today, you start distinguishing between them.</p>
+            </div>
+            <span class="section-header">Reflect:</span>
+            <div class="questions-section">
+                <ol>
+                    <li>What are you currently chasing? Is it what you want, or what you think will make you acceptable?</li>
+                    <li>If no one would ever know, would you still want it?</li>
+                    <li>What do you want that you've been afraid to admit?</li>
+                </ol>
+            </div>
+            <span class="section-header">Today's Practice</span>
+            <div class="practice-section">
+                <p><strong>Write a hidden truth.</strong> Complete: "The thing I want most but haven't admitted is..." Write it. Read it aloud. Sit with it for five minutes.</p>
+            </div>
+            <div class="mantra">"My authentic voice is quieter than the noise, but it's true."</div>
+        </div>
+        
+        <div class="day-prompt">
+            <div class="day-number">Day 4 of 21</div>
+            <h3>Crowded but Empty</h3>
+            <div class="opening-reflection">
+                <strong>Opening Thought</strong>
+                <p>There's a particular loneliness when surrounded by activity but feeling hollow inside. That feeling isn't failure. It's feedback. It's your inner voice telling you something needs to change.</p>
+            </div>
+            <span class="section-header">Reflect:</span>
+            <div class="questions-section">
+                <ol>
+                    <li>Where in your life do you feel most crowded but empty?</li>
+                    <li>What would need to happen for that area to feel alive again?</li>
+                    <li>What are you tolerating that you no longer believe in?</li>
+                </ol>
+            </div>
+            <span class="section-header">Today's Practice</span>
+            <div class="practice-section">
+                <p><strong>Take a walk without inputs.</strong> No phone, no earbuds, no podcasts. Just you and what you notice. Walk slowly. When you return, notice: What became clear?</p>
+            </div>
+            <div class="mantra">"Emptiness, once named, becomes an invitation to change."</div>
+        </div>
+        
+        <div class="day-prompt">
+            <div class="day-number">Day 5 of 21</div>
+            <h3>The Cost of Always Being On</h3>
+            <div class="opening-reflection">
+                <strong>Opening Thought</strong>
+                <p>Your nervous system wasn't designed for constant stimulation. When you're always on, you become fragmented. You lose the capacity for deep thought, real feeling, genuine peace.</p>
+            </div>
+            <span class="section-header">Reflect:</span>
+            <div class="questions-section">
+                <ol>
+                    <li>When was the last time you were genuinely bored?</li>
+                    <li>What happens in your body when you're overstimulated?</li>
+                    <li>What would you need to protect to reclaim stillness?</li>
+                </ol>
+            </div>
+            <span class="section-header">Today's Practice</span>
+            <div class="practice-section">
+                <p><strong>Create one small boundary.</strong> Choose one time today and protect it from inputs. No screens. No news. No other people's voices. It will feel strange. That's the point.</p>
+            </div>
+            <div class="mantra">"Rest is not laziness. It's how you reconnect with yourself."</div>
+        </div>
+        
+        <div class="day-prompt">
+            <div class="day-number">Day 6 of 21</div>
+            <h3>Borrowed Goals</h3>
+            <div class="opening-reflection">
+                <strong>Opening Thought</strong>
+                <p>You've inherited a life not entirely your own. Your parents passed down hopes. Culture handed you timelines. Peers showed you metrics. Most, you accepted without question. Today: Which goals are actually mine?</p>
+            </div>
+            <span class="section-header">Reflect:</span>
+            <div class="questions-section">
+                <ol>
+                    <li>What goal have you been chasing that never came from you?</li>
+                    <li>Who would be disappointed if you let this goal go?</li>
+                    <li>What would you pursue if you had permission to disappoint people you love?</li>
+                </ol>
+            </div>
+            <span class="section-header">Today's Practice</span>
+            <div class="practice-section">
+                <p><strong>Name inherited expectations.</strong> Write 3–5 things you felt you "should" accomplish. Trace each back: Where did this come from? Is this actually mine?</p>
+            </div>
+            <div class="mantra">"I'm allowed to disappoint others in service of my own truth."</div>
+        </div>
+        
+        <div class="day-prompt">
+            <div class="day-number">Day 7 of 21</div>
+            <h3>The Power of Subtraction</h3>
+            <div class="opening-reflection">
+                <strong>Opening Thought</strong>
+                <p>We've been taught that more is always better. But alignment isn't measured in accumulation. It's measured in how true your life feels. Sometimes, true requires letting go.</p>
+            </div>
+            <span class="section-header">Reflect:</span>
+            <div class="questions-section">
+                <ol>
+                    <li>If you subtracted one thing from your life today, what would it be?</li>
+                    <li>What's the smallest version of your life that would still feel true?</li>
+                    <li>What have you been refusing to let go of?</li>
+                </ol>
+            </div>
+            <span class="section-header">Today's Practice</span>
+            <div class="practice-section">
+                <p><strong>Actually remove something.</strong> Choose one thing that doesn't serve who you want to become. Make it real. End it. This will feel scary. That's how you know you're moving.</p>
+            </div>
+            <div class="mantra">"A life aligned is worth more than a life full."</div>
+        </div>
+        
+        <!-- PHASE 1 REFLECTION -->
+        <div class="reflection-page">
+            <h2>Phase One Complete</h2>
+            <p>You've spent seven days noticing. You've become aware of the noise. You've named what drains you. You've identified goals that aren't yours. You've made at least one real change.</p>
+            <p style="margin-top: 1.5em; font-weight: 600;">What's the most important thing you've discovered about your life?</p>
+            <div class="lines">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <p style="margin-top: 2em; font-style: italic; color: #666;">Rest here. Honesty often feels heavier before it feels lighter. That's okay. You're not behind. You're being prepared.</p>
+        </div>
+        
+        <!-- PHASE 2 -->
+        <div class="phase-header">
+            <h2>PHASE TWO: Remembering the Self</h2>
+            <p><strong>Days 8–14</strong> | Identity, Values, Inner Truth</p>
+            <p style="margin-top: 0.8em; color: #444;">Now that you've cleared some noise, you can listen. This week is about reconnecting with who you actually are. Not who you've been told to be. Who you've always been underneath.</p>
+        </div>
+        
+        <!-- DAYS 8-14 CONTENT -->
+        <div class="day-prompt">
+            <div class="day-number">Day 8 of 21</div>
+            <h3>Who Were You Before?</h3>
+            <div class="opening-reflection">
+                <strong>Opening Thought</strong>
+                <p>Beneath all the roles you play, there's something constant. Something true since you were small. That's your ground. Today, you return to it.</p>
+            </div>
+            <span class="section-header">Reflect:</span>
+            <div class="questions-section">
+                <ol>
+                    <li>Who were you before you learned to perform?</li>
+                    <li>What quality has remained constant your whole life?</li>
+                    <li>If everything changed tomorrow, what about you would stay the same?</li>
+                </ol>
+            </div>
+            <span class="section-header">Today's Practice</span>
+            <div class="practice-section">
+                <p><strong>Write a letter from your wisest self.</strong> Imagine the version of you that's been watching your whole life. What would that version tell you? Write it as a letter.</p>
+            </div>
+            <div class="mantra">"You have always been enough. You've simply forgotten."</div>
+        </div>
+        
+        <div class="day-prompt">
+            <div class="day-number">Day 9 of 21</div>
+            <h3>What Gives You Quiet Energy</h3>
+            <div class="opening-reflection">
+                <strong>Opening Thought</strong>
+                <p>Not all energy is the same. Some things drain you. Others fill you—they generate a quiet hum of rightness. A feeling of coming home. Pay attention to what that is.</p>
+            </div>
+            <span class="section-header">Reflect:</span>
+            <div class="questions-section">
+                <ol>
+                    <li>What activities make you lose track of time?</li>
+                    <li>When do you feel most like yourself?</li>
+                    <li>What would you do if you knew you couldn't fail?</li>
+                </ol>
+            </div>
+            <span class="section-header">Today's Practice</span>
+            <div class="practice-section">
+                <p><strong>Spend time in a place that quiets you.</strong> Somewhere that's always felt safe or true. 30+ minutes without agenda. What wants to emerge?</p>
+            </div>
+            <div class="mantra">"Your quiet joy is not selfish. It's essential."</div>
+        </div>
+        
+        <div class="day-prompt">
+            <div class="day-number">Day 10 of 21</div>
+            <h3>The Wisdom in Your Wounds</h3>
+            <div class="opening-reflection">
+                <strong>Opening Thought</strong>
+                <p>The hardest things you've survived have taught you something you couldn't learn any other way. Your pain has become your compassion. Your wounds are the ground where wisdom grows.</p>
+            </div>
+            <span class="section-header">Reflect:</span>
+            <div class="questions-section">
+                <ol>
+                    <li>What's been the most difficult season of your life?</li>
+                    <li>What do you now understand because of that pain?</li>
+                    <li>Who have you been able to help because of what you've survived?</li>
+                </ol>
+            </div>
+            <span class="section-header">Today's Practice</span>
+            <div class="practice-section">
+                <p><strong>Sit with one wound intentionally.</strong> Breathe into it. Ask: "What wisdom are you protecting?" Don't try to fix it. Just acknowledge it.</p>
+            </div>
+            <div class="mantra">"My wounds are not my shame. They are my compassion."</div>
+        </div>
+        
+        <div class="day-prompt">
+            <div class="day-number">Day 11 of 21</div>
+            <h3>Your Pattern of Grace</h3>
+            <div class="opening-reflection">
+                <strong>Opening Thought</strong>
+                <p>There have been moments when something larger showed up. Unexpected doors opened. People appeared. You knew with certainty you were meant to be somewhere. These are signposts pointing toward your purpose.</p>
+            </div>
+            <span class="section-header">Reflect:</span>
+            <div class="questions-section">
+                <ol>
+                    <li>When have you felt held by something larger than yourself?</li>
+                    <li>What's the pattern in your life's unlikely moments?</li>
+                    <li>When have you felt most certain your life had purpose?</li>
+                </ol>
+            </div>
+            <span class="section-header">Today's Practice</span>
+            <div class="practice-section">
+                <p><strong>Create a timeline of grace.</strong> Mark moments when something larger showed up. Unexpected doors. People who changed you. Moments of certainty. What's the pattern?</p>
+            </div>
+            <div class="mantra">"I'm not lost. I'm being led."</div>
+        </div>
+        
+        <div class="day-prompt">
+            <div class="day-number">Day 12 of 21</div>
+            <h3>Your Core Values</h3>
+            <div class="opening-reflection">
+                <strong>Opening Thought</strong>
+                <p>We're taught to value things that don't move us. But your actual values—the things that make you feel alive when honored—might be completely different. That's not a flaw. That's clarity.</p>
+            </div>
+            <span class="section-header">Reflect:</span>
+            <div class="questions-section">
+                <ol>
+                    <li>When do you feel most like yourself? What values are being honored?</li>
+                    <li>What makes you angry when you see it violated?</li>
+                    <li>If you had total freedom and security, what would matter?</li>
+                </ol>
+            </div>
+            <span class="section-header">Today's Practice</span>
+            <div class="practice-section">
+                <p><strong>Name your five core values.</strong> Freedom, connection, beauty, growth, service, truth, loyalty... For each, ask: "Where am I honoring this? Where am I betraying it?"</p>
+            </div>
+            <div class="mantra">"My values are not selfish. They are my truth."</div>
+        </div>
+        
+        <div class="day-prompt">
+            <div class="day-number">Day 13 of 21</div>
+            <h3>Your Gifts</h3>
+            <div class="opening-reflection">
+                <strong>Opening Thought</strong>
+                <p>You've been given gifts. Particular ways of seeing and being that are uniquely yours. Gifts that feel so natural you've underestimated them. Gifts you hid because the world said they weren't valuable. Today, you name them.</p>
+            </div>
+            <span class="section-header">Reflect:</span>
+            <div class="questions-section">
+                <ol>
+                    <li>What have people consistently thanked you for?</li>
+                    <li>What comes so naturally you think everyone can do it?</li>
+                    <li>If you used only the gifts you love, what would those be?</li>
+                </ol>
+            </div>
+            <span class="section-header">Today's Practice</span>
+            <div class="practice-section">
+                <p><strong>Receive your own recognition.</strong> Write 3–5 gifts you possess. Read them aloud as if speaking about someone you love. Let yourself be known by yourself.</p>
+            </div>
+            <div class="mantra">"My gifts are not for me alone. They're for the world."</div>
+        </div>
+        
+        <div class="day-prompt">
+            <div class="day-number">Day 14 of 21</div>
+            <h3>Who You Actually Are</h3>
+            <div class="opening-reflection">
+                <strong>Opening Thought</strong>
+                <p>After seven days of remembering, you've gathered pieces of yourself. Your essence. Your values. Your gifts. Your wisdom. Now you integrate them. You see yourself as whole.</p>
+            </div>
+            <span class="section-header">Reflect:</span>
+            <div class="questions-section">
+                <ol>
+                    <li>How would you complete: "I am ___"?</li>
+                    <li>What's different between who you thought you should be and who you now know you are?</li>
+                    <li>What would change if you lived as if you believed this about yourself?</li>
+                </ol>
+            </div>
+            <span class="section-header">Today's Practice</span>
+            <div class="practice-section">
+                <p><strong>Write your own truth.</strong> Complete: "I am someone who ___. I believe ___. I matter because ___. I am called to ___." Keep rewriting until it lands.</p>
+            </div>
+            <div class="mantra">"I know myself. I trust myself. I am myself."</div>
+        </div>
+        
+        <!-- PHASE 2 REFLECTION -->
+        <div class="reflection-page">
+            <h2>Phase Two Complete</h2>
+            <p>You've spent seven days looking inward. You've reconnected with who you've always been. You've named your values. Honored your wounds. Recognized your gifts. Traced the pattern of grace.</p>
+            <p style="margin-top: 1.5em; font-weight: 600;">Write a statement of who you actually are:</p>
+            <div class="lines">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <p style="margin-top: 2em; font-style: italic; color: #666;">You now have something solid to stand on. Rest here. Trust what you've discovered. Phase Three is about living it.</p>
+        </div>
+        
+        <!-- PHASE 3 -->
+        <div class="phase-header">
+            <h2>PHASE THREE: Aligning with Purpose</h2>
+            <p><strong>Days 15–21</strong> | Integration, Direction, Commitment</p>
+            <p style="margin-top: 0.8em; color: #444;">You've cleared the noise. You've remembered yourself. Now comes the simplest—and hardest—part: living. Making small, true choices that align with who you are.</p>
+        </div>
+        
+        <!-- DAYS 15-21 CONTENT -->
+        <div class="day-prompt">
+            <div class="day-number">Day 15 of 21</div>
+            <h3>Fewer Goals, Truer Ones</h3>
+            <div class="opening-reflection">
+                <strong>Opening Thought</strong>
+                <p>We've been taught that more goals = more success. But alignment isn't about volume. It's about truth. A few things, done with presence and meaning. This week, you let go of false ambitions.</p>
+            </div>
+            <span class="section-header">Reflect:</span>
+            <div class="questions-section">
+                <ol>
+                    <li>Which goals come from your values and which from external pressure?</li>
+                    <li>What would happen if you stopped pursuing three goals?</li>
+                    <li>If you could commit to only three goals next year, what would they be?</li>
+                </ol>
+            </div>
+            <span class="section-header">Today's Practice</span>
+            <div class="practice-section">
+                <p><strong>Make a hard choice.</strong> Choose one commitment that doesn't align with who you are. One born from external pressure. End it. Actually. This will feel scary. That's how you know.</p>
+            </div>
+            <div class="mantra">"Depth over breadth. Truth over volume."</div>
+        </div>
+        
+        <div class="day-prompt">
+            <div class="day-number">Day 16 of 21</div>
+            <h3>Devotion Over Discipline</h3>
+            <div class="opening-reflection">
+                <strong>Opening Thought</strong>
+                <p>Discipline without meaning becomes torture. Devotion is different. It's when your will aligns with your heart. When you show up because you care. Devotion is sustainable. Discipline always cracks.</p>
+            </div>
+            <span class="section-header">Reflect:</span>
+            <div class="questions-section">
+                <ol>
+                    <li>What are you white-knuckling through discipline for?</li>
+                    <li>What's worth your genuine devotion?</li>
+                    <li>If you approached goals as devotion—service to who you want to become—how would that change things?</li>
+                </ol>
+            </div>
+            <span class="section-header">Today's Practice</span>
+            <div class="practice-section">
+                <p><strong>Replace one discipline with devotion.</strong> Ask: "What am I actually devoted to here?" If nothing, let it go. If there's genuine care—recommit as devotion. Feel the difference.</p>
+            </div>
+            <div class="mantra">"I show up because I care, not because I'm forced."</div>
+        </div>
+        
+        <div class="day-prompt">
+            <div class="day-number">Day 17 of 21</div>
+            <h3>Small Acts, Done Consistently</h3>
+            <div class="opening-reflection">
+                <strong>Opening Thought</strong>
+                <p>The life you want isn't built in one day. It's built in small acts repeated consistently. A five-minute practice. A conversation. A boundary kept. Small things, done faithfully. That's how real change lives.</p>
+            </div>
+            <span class="section-header">Reflect:</span>
+            <div class="questions-section">
+                <ol>
+                    <li>What's one small act that, if you did it daily, would make you feel like yourself?</li>
+                    <li>What small act, repeated, would move you toward who you want to become?</li>
+                    <li>What small practice has changed your life before?</li>
+                </ol>
+            </div>
+            <span class="section-header">Today's Practice</span>
+            <div class="practice-section">
+                <p><strong>Commit to one small act for the next week.</strong> Write three sentences. Walk 10 minutes. Call someone. Light a candle. Track it. Watch how it changes how you feel.</p>
+            </div>
+            <div class="mantra">"Small, true acts compound into a true life."</div>
+        </div>
+        
+        <div class="day-prompt">
+            <div class="day-number">Day 18 of 21</div>
+            <h3>Service Beyond Yourself</h3>
+            <div class="opening-reflection">
+                <strong>Opening Thought</strong>
+                <p>One of the deepest sources of meaning is knowing your life matters to something beyond yourself. You're part of something. Your gifts are needed. Your presence matters. This shifts everything.</p>
+            </div>
+            <span class="section-header">Reflect:</span>
+            <div class="questions-section">
+                <ol>
+                    <li>What would you be willing to serve?</li>
+                    <li>How would living in service of that change your daily choices?</li>
+                    <li>Who or what has already benefited from your presence?</li>
+                </ol>
+            </div>
+            <span class="section-header">Today's Practice</span>
+            <div class="practice-section">
+                <p><strong>Identify your service.</strong> Complete: "I am called to serve ___." Don't overthink. What does your deepest self know you're here to serve?</p>
+            </div>
+            <div class="mantra">"My life is small and my life is important."</div>
+        </div>
+        
+        <div class="day-prompt">
+            <div class="day-number">Day 19 of 21</div>
+            <h3>Your Alignment Inventory</h3>
+            <div class="opening-reflection">
+                <strong>Opening Thought</strong>
+                <p>Alignment is the growing consistency between what you believe and how you live. Between who you know yourself to be and the choices you make. Today, you take an honest inventory. This isn't shame. This is honesty.</p>
+            </div>
+            <span class="section-header">Reflect:</span>
+            <div class="questions-section">
+                <ol>
+                    <li>In what areas are you most aligned?</li>
+                    <li>Where is the greatest misalignment?</li>
+                    <li>Which misaligned area is causing the most pain?</li>
+                </ol>
+            </div>
+            <span class="section-header">Today's Practice</span>
+            <div class="practice-section">
+                <p><strong>Draw an alignment map.</strong> List life areas: Work, Relationships, Health, Finances, Growth, Creativity, Community. Rate each 1–10: "How aligned is this with who I am?" Look at the picture.</p>
+            </div>
+            <div class="mantra">"Alignment begins with honest seeing."</div>
+        </div>
+        
+        <div class="day-prompt">
+            <div class="day-number">Day 20 of 21</div>
+            <h3>Your Commitment</h3>
+            <div class="opening-reflection">
+                <strong>Opening Thought</strong>
+                <p>Everything up to this point has been preparation. Now comes the actual commitment: a real choice to live differently. Not perfectly. Not all at once. But truly. This is where you stop thinking and start living.</p>
+            </div>
+            <span class="section-header">Reflect:</span>
+            <div class="questions-section">
+                <ol>
+                    <li>What's the one change that would shift everything?</li>
+                    <li>What would need to be true for you to actually make this change?</li>
+                    <li>What are you ready to commit to—as a real shift in how you live?</li>
+                </ol>
+            </div>
+            <span class="section-header">Today's Practice</span>
+            <div class="practice-section">
+                <p><strong>Make a vow.</strong> Sit quietly. Speak aloud a real commitment to yourself. "I commit to ___." Or "I'm ready to ___." Speak it as if it's sacred. Because it is.</p>
+            </div>
+            <div class="mantra">"I am ready. I am worthy. I commit."</div>
+        </div>
+        
+        <div class="day-prompt">
+            <div class="day-number">Day 21 of 21</div>
+            <h3>Welcome Home</h3>
+            <div class="opening-reflection">
+                <strong>Opening Thought</strong>
+                <p>Twenty-one days ago, you began this because something inside knew it was time to stop and listen. Today, you have heard yourself. You've remembered who you are. You've committed to living authentically. This isn't the end. It's the beginning.</p>
+            </div>
+            <span class="section-header">Reflect:</span>
+            <div class="questions-section">
+                <ol>
+                    <li>Who are you now that you weren't 21 days ago?</li>
+                    <li>What will you protect going forward so you don't lose yourself?</li>
+                    <li>What's the one truth you're carrying forward?</li>
+                </ol>
+            </div>
+            <span class="section-header">Today's Practice</span>
+            <div class="practice-section">
+                <p><strong>Welcome yourself home.</strong> Revisit a place that quiets you. Write yourself a letter. Light a candle. Speak a truth aloud. Share with someone you trust. Make it real. Make it meaningful.</p>
+            </div>
+            <div class="mantra">"I am home. I am myself. I am enough."</div>
+        </div>
+        
+        <!-- FINAL REFLECTION -->
+        <div class="reflection-page">
+            <h2>Your 21-Day Journey Complete</h2>
+            
+            <p>You came here because you had forgotten how to hear yourself beneath all the noise. You've cleared that noise. You've remembered who you actually are. You've committed to living that truth.</p>
+            
+            <p style="margin-top: 1.5em; font-weight: 600;">This is what you now know:</p>
+            <div class="lines">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            
+            <div class="highlight-box" style="margin: 2em 0;">
+                <strong>Moving Forward</strong><br><br>
+                The noise will return. There will be voices telling you what to want, who to be, what to achieve.<br><br>
+                
+                But now you have something the noise cannot touch: the knowledge of yourself. The memory of what's true. The experience of what alignment feels like.<br><br>
+                
+                You don't need to change your entire life. You need to make smaller, truer choices. Honor your values. Use your gifts. Keep your commitments. Listen to yourself more than you listen to the world.<br><br>
+                
+                <strong>Return to this whenever you need to remember.</strong>
+            </div>
+            
+            <p style="margin-top: 2em; text-align: center; font-style: italic; color: #666; line-height: 1.8;">
+                You are not behind.<br>
+                You are not broken.<br>
+                You are not lost.<br>
+                <br>
+                You are exactly who you need to be, right now, to take the next step.<br>
+                <br>
+                Trust that. Live that. Return to that.<br>
+                <br>
+                This is your life. Make it yours.
+            </p>
+        </div>
+        
+    </div>
+</body>
+</html>
